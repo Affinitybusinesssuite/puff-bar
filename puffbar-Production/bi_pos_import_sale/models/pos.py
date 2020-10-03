@@ -38,7 +38,7 @@ class InheritPOSOrder(models.Model):
 			sale_orders = self.env['sale.order'].search([('state','=','draft'),('woo_status', '=', 'processing')])
 #  ('date_order','>=',last_day),
 		else:
-			sale_orders = self.env['sale.order'].search([('date_order','=','draft'),('woo_status', '=', 'processing')])
+			sale_orders = self.env['sale.order'].search([('state','=','draft'),('woo_status', '=', 'processing')])
 		for s in sale_orders:
 			vals1 = {
 				'id':s.id,
