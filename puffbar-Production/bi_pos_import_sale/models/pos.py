@@ -35,7 +35,8 @@ class InheritPOSOrder(models.Model):
 		last_day = datetime.strptime(l_date,DEFAULT_SERVER_DATETIME_FORMAT)
 		config = self.env['pos.config'].browse(config_id)
 		if config.load_orders_days > 0:
-			sale_orders = self.env['sale.order'].search([('date_order','>=',last_day),('woo_status', '=', 'processing')])
+			sale_orders = self.env['sale.order'].search(('woo_status', '=', 'processing')])
+# [('date_order','>=',last_day),
 		else:
 			sale_orders = self.env['sale.order'].search([('woo_status', '=', 'processing')])
 		for s in sale_orders:
