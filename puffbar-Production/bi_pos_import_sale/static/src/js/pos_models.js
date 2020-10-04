@@ -122,14 +122,14 @@ odoo.define('bi_pos_import_sale.import_sale', function(require) {
 			var orders = orders;
 			
 			for(var i = 0, len = Math.min(orders.length,1000); i < len; i++){
-				//if(orders[i].woo_status =='processing'){
+				if(orders[i].woo_status =='processing' && orders[i].state == 'draft'){
 				var order    = orders[i];
 				var ordersline_html = QWeb.render('OrdersLine',{widget: this, order:orders[i]});
 				var ordersline = document.createElement('tbody');
 				ordersline.innerHTML = ordersline_html;
 				ordersline = ordersline.childNodes[1];
 				content.appendChild(ordersline);
-				//}
+				}
 			}
 		},
 
